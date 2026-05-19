@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL, PROFILE_BG_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
 
@@ -21,7 +21,7 @@ const UserCard = ({ user }) => {
   return (
     <div className="card bg-base-300 w-96 shadow-xl">
       <figure>
-        <img src={user.photoUrl} alt="photo" />
+        <img src={user.photoUrl || PROFILE_BG_URL} alt="photo" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{firstName + " " + lastName}</h2>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL, PROFILE_BG_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/conectionSlice";
@@ -33,6 +33,8 @@ const Connections = () => {
       <h1 className="text-bold text-white text-3xl">Connections</h1>
 
       {connections.map((connection) => {
+        if(!connection) return "";
+        
         const { _id, firstName, lastName, photoUrl, age, gender, about } =
           connection;
 
@@ -45,7 +47,7 @@ const Connections = () => {
               <img
                 alt="photo"
                 className="w-20 h-20 rounded-full object-cover"
-                src={photoUrl}
+                src={photoUrl || PROFILE_BG_URL}
               />
             </div>
             <div className="text-left mx-4 ">
